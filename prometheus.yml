@@ -18,9 +18,9 @@ scrape_configs:
     # scheme defaults to 'http'.
     static_configs:
     - targets: ['127.0.0.1:9090']
-    - targets: ['192.168.1.53:9100']
+    - targets: ['IP_Addr:9100']
 
 # Monitoring Pi-Hole
   - job_name: 'Pihole'
     static_configs:
-      - targets: ['192.168.1.53:9617']
+      - targets: ['IP_Addr:9617']
