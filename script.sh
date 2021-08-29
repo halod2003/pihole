@@ -57,3 +57,4 @@ echo "Pi-hole http://$IPAddr"
 echo "Grafana http://$IPAddr:3000"
 echo "Portainer http://$IPAddr:9000"
 echo "Prometheus http://$IPAddr:9090"
+exit 1
