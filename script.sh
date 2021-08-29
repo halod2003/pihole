@@ -48,7 +48,11 @@ echo "$PiExpoInfo$IPAddr" >> docker-compose.yml
 
 sudo docker-compose -f docker-compose.yml up -d
 
-## 5) Print access information
+# 5) Clean-up
+
+sudo rm -r -f /home/pi/prometheus/docker-compose.yml
+
+## 6) Print access information
 
 echo Installation complete
 echo "Access Information"
