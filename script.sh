@@ -27,18 +27,19 @@ echo "    "
 
 cd /home/pi
 mkdir pihole
-cd pihole
-mkdir pihole
-mkdir dnsmasq.d
-cd /home/pi
+mkdir -p pihole/{pihole,dnsmasq.d}
+mkdir prometheus
+mkdir grafana
+cd ../grafana
+mkdir -p grafana/provisioning/{datasources,dashboards}
+mkdir tmpinst
 
 #For Prometheus
-mkdir prometheus
-cd prometheus
-curl -s https://raw.githubusercontent.com/halod2003/pihole/main/prometheus.yml -o prometheus.yml
-curl -s https://raw.githubusercontent.com/halod2003/pihole/main/docker-compose.yml -o docker-compose.yml
-sudo sed -i "s/IP_Addr/$IPAddr/" prometheus.yml
-sudo sed -i "s/IP_Addr/$IPAddr/" docker-compose.yml
+cd /home/pi/prometheus
+curl -s https://raw.githubusercontent.com/halod2003/pihole/main/prometheus.yml -o prometheus/prometheus.yml
+curl -s https://raw.githubusercontent.com/halod2003/pihole/main/docker-compose.yml -o tmpinst/docker-compose.yml
+sudo sed -i "s/IP_Addr/$IPAddr/" prometheus/prometheus.yml
+sudo sed -i "s/IP_Addr/$IPAddr/" tmpinst/docker-compose.yml
 
 ## 4) Install Node Exporter
 
@@ -54,7 +55,7 @@ sudo systemctl enable node_exporter
 
 ## 5) Install services using docker-compose
 
-sudo docker-compose -f docker-compose.yml up -d
+sudo docker-compose -f tmpinst/docker-compose.yml up -d
 sudo rm docker-compose.yml
 
 ## 6) Print access information
