@@ -37,6 +37,7 @@ mkdir prometheus
 cd prometheus
 curl -s https://raw.githubusercontent.com/halod2003/pihole/main/prometheus.yml -o prometheus.yml
 
+
 ## 4) Install services using docker-compose
 
 PiExpoInfo='        - PIHOLE_HOSTNAME='
@@ -48,11 +49,19 @@ echo "$PiExpoInfo$IPAddr" >> docker-compose.yml
 
 sudo docker-compose -f docker-compose.yml up -d
 
-# 5) Clean-up
+## 5) Install Node Exporter
 
-sudo rm -r -f /home/pi/prometheus/docker-compose.yml
+cd /home/pi
+wget https://github.com/prometheus/node_exporter/releases/download/v1.1.2/node_exporter-1.1.2.linux-armv7.tar.gz
+tar xfz node_exporter-1.1.2.linux-armv7.tar.gz
+rm node_exporter-1.1.2.linux-armv7.tar.gz
+mv node_exporter-1.1.2.linux-armv7/ node_exporter
+curl -s https://raw.githubusercontent.com/halod2003/pihole/main/node_exporter.service -o node_exporter.service
+sudo mv node_exporter.service /etc/systemd/system/
+sudo systemctl start node_exporter
+sudo systemctl enable node_exporter
 
-## 6) Print access information
+## 5) Print access information
 
 echo Installation complete
 echo "Access Information"
