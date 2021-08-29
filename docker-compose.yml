@@ -42,9 +42,9 @@ services:
 
     portainer-ce:
       container_name: Portainer
-      image: 'portainer/portainer-ce:linux-arm
+      image: 'portainer/portainer-ce:linux-arm'
       ports:
-        - '9000:9000'
+        - '9000:9000/tcp'
       restart: always
       volumes:
         - '/var/run/docker.sock:/var/run/docker.sock'
