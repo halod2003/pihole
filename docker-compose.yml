@@ -39,7 +39,7 @@ services:
         - '9090:9090/tcp'
       volumes:
         - '/home/pi/prometheus:/etc/prometheus'
-		
+
     portainer-ce:
       container_name: Portainer
       image: 'portainer/portainer-ce:linux-arm
