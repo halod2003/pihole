@@ -4,7 +4,7 @@
 
 echo Installing Docker and Docker compose
 
-sudo apt-get install docker-ce docker-ce-cli
+sudo apt-get install docker-ce docker-ce-cli containerd.io
 sudo usermod -aG docker pi
 #sudo systemctl enable docker
 
