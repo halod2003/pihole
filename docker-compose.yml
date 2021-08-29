@@ -3,6 +3,7 @@ services:
     pihole:
       container_name: PiHole
       image: 'pihole/pihole:latest'
+      restart: unless-stopped
       ports:
         - '53:53/tcp'
         - '53:53/udp'
@@ -19,35 +20,33 @@ services:
       dns:
         - 127.0.0.1
         - 1.1.1.1
-      restart: unless-stopped
 
     grafana:
       container_name: Grafana
       image: 'grafana/grafana:latest'
+      restart: unless-stopped
       ports:
         - '3000:3000/tcp'        
       environment:
         - 'GF_INSTALL_PLUGINS=grafana-piechart-panel,grafana-clock-panel,grafana-simple-json-datasource'
-		- 'GF_SECURITY_ADMIN_PASSWORD=GF@admin'
-      restart: unless-stopped
-
-    pihole-exporter:
-      container_name: PiHole-Exporter
-      image: 'ekofr/pihole-exporter:v0.0.11'
-      ports:
-        - '9617:9617/tcp'
-      environment:
-        - PIHOLE_HOSTNAME=192.168.1.53
-        - PIHOLE_PASSWORD=pih00le@dmin
-        - INTERVAL=30s
-        - PORT=9617
-      restart: unless-stopped
+        - 'GF_SECURITY_ADMIN_PASSWORD=GF@admin'
 
     prometheus:
       container_name: Prometheus
       image: prom/prometheus
+      restart: unless-stopped
       ports:
         - '9090:9090/tcp'
       volumes:
         - '/home/pi/prometheus:/etc/prometheus'
+
+    pihole-exporter:
+      container_name: PiHole-Exporter
+      image: 'ekofr/pihole-exporter:v0.0.11'
       restart: unless-stopped
+      ports:
+        - '9617:9617/tcp'
+      environment:
+        - PIHOLE_PASSWORD=pih00le@dmin
+        - INTERVAL=30s
+        - PORT=9617
