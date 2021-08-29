@@ -68,4 +68,12 @@ echo "Pi-hole http://$IPAddr"
 echo "Grafana http://$IPAddr:3000"
 echo "Portainer http://$IPAddr:9000"
 echo "Prometheus http://$IPAddr:9090"
-exit 1
+echo "Press any key to continue"
+while [ true ] ; do
+read -t 15 -n 1
+if [ $? = 0 ] ; then
+exit ;
+else
+echo "waiting for the keypress"
+fi
+done
