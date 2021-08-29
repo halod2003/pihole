@@ -22,3 +22,9 @@ sudo pip3 install docker-compose
 2) Execute installation script
 
 sudo curl -sL https://github.com/halod2003/pihole/raw/main/script.sh | sh
+
+3) Access Grafana and add Prometheus as DataSource
+4) Install below dashboards
+    
+    https://grafana.com/grafana/dashboards/10176
+    https://grafana.com/grafana/dashboards/1860
