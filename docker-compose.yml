@@ -60,3 +60,4 @@ services:
         - PIHOLE_PASSWORD=pih00le@dmin
         - INTERVAL=30s
         - PORT=9617
+        - PIHOLE_HOSTNAME=IP_Addr
