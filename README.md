@@ -27,4 +27,5 @@ sudo curl -sL https://github.com/halod2003/pihole/raw/main/script.sh | sh
 4) Install below dashboards
     
     https://grafana.com/grafana/dashboards/10176
+    
     https://grafana.com/grafana/dashboards/1860
