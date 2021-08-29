@@ -4,7 +4,7 @@ datasources:
 - name: Prometheus
   type: prometheus
   access: proxy
-  url: http://192.168.1.23:9090
+  url: http://IP_Addr:9090
   isDefault: true
   editable: false
   jsonData:
