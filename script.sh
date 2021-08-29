@@ -35,13 +35,13 @@ cd /home/pi
 #For Prometheus
 mkdir prometheus
 cd prometheus
-curl https://raw.githubusercontent.com/halod2003/pihole/main/prometheus.yml -o prometheus.yml
+curl -s https://raw.githubusercontent.com/halod2003/pihole/main/prometheus.yml -o prometheus.yml
 
 ## 4) Install services using docker-compose
 
 PiExpoInfo='        - PIHOLE_HOSTNAME='
 
-curl https://raw.githubusercontent.com/halod2003/pihole/main/docker-compose.yml -o docker-compose.yml
+curl -s https://raw.githubusercontent.com/halod2003/pihole/main/docker-compose.yml -o docker-compose.yml
 echo "$PiExpoInfo$IPAddr" >> docker-compose.yml
 
 ##Start containers using docker-compose files
