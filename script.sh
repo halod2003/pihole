@@ -8,11 +8,6 @@ echo Updating Pi
 #sudo apt update
 #sudo apt upgrade
 
-## Installing dependencies
-sudo apt-get install libffi-dev libssl-dev -qq > /dev/null
-sudo apt install python3-dev -qq > /dev/null
-sudo apt-get install -y python3 python3-pip -qq > /dev/null
-
 ##Install Golang
 ##sudo apt-get install golang
 
@@ -24,18 +19,7 @@ echo What is the IP address of Pi-Hole?
 exec < /dev/tty
 read IPAddr
 echo Thank you $IPAddr
-
-## 2) Install Docker (Ref: https://pimylifeup.com/raspberry-pi-docker/)
-
-echo Installing Docker and Docker compose
-
-curl -sSL https://get.docker.com | sh
-
-sudo usermod -aG docker pi
-sudo pip3 install docker-compose --quiet
-sudo systemctl enable docker
-
-echo Docker Installed
+echo "    "
 
 ## 3) Create supporting direcoties and files
 
@@ -63,6 +47,8 @@ echo "$PiExpoInfo$IPAddr" >> docker-compose.yml
 ##Start containers using docker-compose files
 
 sudo docker-compose -f docker-compose.yml up -d
+
+## 5) Print access information
 
 echo Installation complete
 echo "Access Information"
