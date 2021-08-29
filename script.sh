@@ -3,7 +3,7 @@
 
 ## 1) Update Pi
 
-echo Updating Pi
+#echo Updating Pi
 
 #sudo apt update
 #sudo apt upgrade
@@ -11,14 +11,14 @@ echo Updating Pi
 ##Install Golang
 ##sudo apt-get install golang
 
-echo Update complete
+#echo Update complete
 
 ## 2) Collecting information
 
 echo What is the IP address of Pi-Hole?
 exec < /dev/tty
 read IPAddr
-echo Thank you $IPAddr
+echo "Thank you for providing $IPAddr"
 echo "    "
 
 ## 3) Create supporting direcoties and files
