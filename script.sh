@@ -67,7 +67,7 @@ sudo docker-compose -f docker-compose.yml up -d
 echo Installation complete
 echo "Access Information"
 echo "------------------"
-echo "Pi-hole http://<IP-Address>"
-echo "Grafana http://<IP-Address>:3000"
-echo "Portainer http://<IP-Address>:9000"
-echo "Prometheus http://<IP-Address>:9090"
+echo "Pi-hole http://$IPAddr"
+echo "Grafana http://$IPAddr:3000"
+echo "Portainer http://$IPAddr:9000"
+echo "Prometheus http://$IPAddr:9090"
