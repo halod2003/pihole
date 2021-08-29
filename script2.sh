@@ -4,8 +4,8 @@
 
 echo Installing Docker and Docker compose
 
-sudo apt-get install docker-ce
-#sudo usermod -aG docker pi
+sudo apt-get install docker-ce docker-ce-cli
+sudo usermod -aG docker pi
 #sudo systemctl enable docker
 
 #sudo pip3 install docker-compose --quiet
