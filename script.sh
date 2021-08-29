@@ -27,7 +27,7 @@ echo Thank you $IPAddr
 
 ## 2) Install Docker (Ref: https://pimylifeup.com/raspberry-pi-docker/)
 
-echo Installing Docker & Docker compose
+echo Installing Docker and Docker compose
 
 #curl -sSL https://get.docker.com | sh
 
