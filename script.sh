@@ -29,10 +29,10 @@ echo Thank you $IPAddr
 
 echo Installing Docker and Docker compose
 
-#curl -sSL https://get.docker.com | sh
+curl -sSL https://get.docker.com | sh
 
 sudo usermod -aG docker pi
-sudo pip3 install docker-compose
+sudo pip3 install docker-compose --quiet
 sudo systemctl enable docker
 
 echo Docker Installed
@@ -57,7 +57,7 @@ curl https://raw.githubusercontent.com/halod2003/pihole/main/prometheus.yml -o p
 
 PiExpoInfo='        - PIHOLE_HOSTNAME='
 
-curl https://github.com/halod2003/pihole/raw/main/docker-compose.yml -o docker-compose.yml
+curl https://raw.githubusercontent.com/halod2003/pihole/main/docker-compose.yml -o docker-compose.yml
 echo "$PiExpoInfo$IPAddr" >> docker-compose.yml
 
 ##Start containers using docker-compose files
@@ -65,9 +65,9 @@ echo "$PiExpoInfo$IPAddr" >> docker-compose.yml
 sudo docker-compose -f docker-compose.yml up -d
 
 echo Installation complete
-echo Access Information
-echo ------------------
-echo Pi-hole http://<IP-Address>
-echo Grafana http://<IP-Address>:3000
-echo Portainer http://<IP-Address>:9000
-echo Prometheus http://<IP-Address>:9090
+echo "Access Information"
+echo "------------------"
+echo "Pi-hole http://<IP-Address>"
+echo "Grafana http://<IP-Address>:3000"
+echo "Portainer http://<IP-Address>:9000"
+echo "Prometheus http://<IP-Address>:9090"
