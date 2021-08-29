@@ -5,8 +5,8 @@
 
 echo Updating Pi
 
-sudo apt update
-sudo apt upgrade
+#sudo apt update
+#sudo apt upgrade
 
 ## Installing dependencies
 sudo apt-get install libffi-dev libssl-dev
@@ -36,18 +36,7 @@ sudo systemctl enable docker
 
 echo Docker Installed
 
-## 3) Install Portainer (Ref: https://pimylifeup.com/raspberry-pi-portainer/)
-
-echo Installing Portainer
-
-sudo docker pull portainer/portainer-ce:linux-arm
-sudo docker run -d -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:linux-arm
-
-## Accessing Portainer: http://<ip-address>:9000
-
-echo Portainer installed
-
-## 4) Create supporting direcoties and files
+## 3) Create supporting direcoties and files
 
 ##For Pi-Hole
 
@@ -63,8 +52,7 @@ mkdir prometheus
 cd prometheus
 curl https://raw.githubusercontent.com/halod2003/pihole/main/prometheus.yml -o prometheus.yml
 
-
-## 5) Install services using docker-compose
+## 4) Install services using docker-compose
 
 PiExpoInfo='        - PIHOLE_HOSTNAME='
 
