@@ -21,7 +21,7 @@ read IPAddr
 echo "Thank you for providing $IPAddr"
 echo "    "
 
-## 3) Create supporting direcoties and files
+## 3) Create supporting directories and files
 
 ##For Pi-Hole
 
@@ -36,16 +36,11 @@ cd /home/pi
 mkdir prometheus
 cd prometheus
 curl -s https://raw.githubusercontent.com/halod2003/pihole/main/prometheus.yml -o prometheus.yml
-
+curl -s https://raw.githubusercontent.com/halod2003/pihole/main/docker-compose.yml -o docker-compose.yml
+sudo sed -i 's/IP_Addr/$IPAddr/' prometheus.yml
+sudo sed -i 's/IP_Addr/$IPAddr/' docker-compose.yml
 
 ## 4) Install services using docker-compose
-
-PiExpoInfo='        - PIHOLE_HOSTNAME='
-
-curl -s https://raw.githubusercontent.com/halod2003/pihole/main/docker-compose.yml -o docker-compose.yml
-echo "$PiExpoInfo$IPAddr" >> docker-compose.yml
-
-##Start containers using docker-compose files
 
 sudo docker-compose -f docker-compose.yml up -d
 
@@ -64,8 +59,10 @@ sudo systemctl enable node_exporter
 ## 5) Print access information
 
 echo Installation complete
+echo "    "
 echo "Access Information"
 echo "------------------"
+echo "    "
 echo "Pi-hole http://$IPAddr"
 echo "Grafana http://$IPAddr:3000"
 echo "Portainer http://$IPAddr:9000"
