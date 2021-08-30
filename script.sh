@@ -38,7 +38,7 @@ mkdir -p {prometheus,pihole/{pihole,dnsmasq.d},grafana/provisioning/{datasources
 #Download and modify configuration files
 curl -s https://raw.githubusercontent.com/halod2003/pihole/main/prometheus.yml -o prometheus/prometheus.yml
 curl -s https://raw.githubusercontent.com/halod2003/pihole/main/docker-compose.yml -o tmpinst/docker-compose.yml
-curl -s https://raw.githubusercontent.com/halod2003/pihole/main/prometheus_ds.yml -o grafana/provisioning/datasources/datasource.yml
+curl -s https://raw.githubusercontent.com/halod2003/pihole/main/datasource.yml -o grafana/provisioning/datasources/datasource.yml
 curl -sL https://raw.githubusercontent.com/halod2003/pihole/main/dashboard.yml  -o grafana/provisioning/dashboards/dashboard.yml
 curl -sL https://grafana.com/api/dashboards/1860/revisions/23/download -o grafana/provisioning/dashboards/dash1.json
 curl -sL https://grafana.com/api/dashboards/10176/revisions/2/download -o grafana/provisioning/dashboards/dash2.json
