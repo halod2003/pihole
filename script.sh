@@ -30,9 +30,12 @@ mkdir -p {prometheus,pihole/{pihole,dnsmasq.d},grafana/provisioning/{datasources
 curl -s https://raw.githubusercontent.com/halod2003/pihole/main/prometheus.yml -o prometheus/prometheus.yml
 curl -s https://raw.githubusercontent.com/halod2003/pihole/main/docker-compose.yml -o tmpinst/docker-compose.yml
 curl -s https://raw.githubusercontent.com/halod2003/pihole/main/prometheus_ds.yml -o grafana/provisioning/datasources/datasource.yml
+curl -sL https://grafana.com/api/dashboards/1860/revisions/23/download -o grafana/provisioning/dashboards/dash1.json
+curl -sL https://grafana.com/api/dashboards/10176/revisions/2/download -o grafana/provisioning/dashboards/dash2.json
 sudo sed -i "s/IP_Addr/$IPAddr/" prometheus/prometheus.yml
 sudo sed -i "s/IP_Addr/$IPAddr/" tmpinst/docker-compose.yml
 sudo sed -i "s/IP_Addr/$IPAddr/" grafana/provisioning/datasources/datasource.yml
+
 
 ## 4) Install Node Exporter
 
