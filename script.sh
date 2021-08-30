@@ -26,7 +26,7 @@ echo "    "
 cd /home/pi
 mkdir -p {prometheus,pihole/{pihole,dnsmasq.d},grafana/provisioning/{datasources,dashboards},tmpinst}
 
-#For Prometheus
+#Download and modify configuration files
 curl -s https://raw.githubusercontent.com/halod2003/pihole/main/prometheus.yml -o prometheus/prometheus.yml
 curl -s https://raw.githubusercontent.com/halod2003/pihole/main/docker-compose.yml -o tmpinst/docker-compose.yml
 curl -s https://raw.githubusercontent.com/halod2003/pihole/main/prometheus_ds.yml -o grafana/provisioning/datasources/prometheus_ds.yml
@@ -49,7 +49,10 @@ sudo systemctl enable node_exporter
 ## 5) Install services using docker-compose
 
 sudo docker-compose -f tmpinst/docker-compose.yml up -d
-sudo rm docker-compose.yml
+
+#clean-up
+sudo rm tmpinst/docker-compose.yml
+sudo rm -r tmpinst
 
 ## 6) Print access information
 
