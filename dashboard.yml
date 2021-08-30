@@ -1,0 +1,8 @@
+# grafana/provisioning/dashboards/dashboard.yml
+apiVersion: 1
+ 
+providers:
+  - name: 'Prometheus'
+    folder: 'General'
+    options:
+      path: /etc/grafana/provisioning/dashboards
