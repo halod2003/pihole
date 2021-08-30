@@ -7,6 +7,3 @@ datasources:
   url: http://IP_Addr:9090
   isDefault: true
   editable: false
-  jsonData:
-    httpMethod:GET
-    manageAlerts:false
