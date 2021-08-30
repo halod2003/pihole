@@ -6,7 +6,7 @@
 #echo Updating Pi
 
 #sudo apt update
-#sudo apt upgrade
+#sudo apt upgrade -y
 
 ##Install Golang
 ##sudo apt-get install golang
