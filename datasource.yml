@@ -8,5 +8,5 @@ datasources:
   isDefault: true
   editable: false
   jsonData:
-    httpMethod:GET,
+    httpMethod:GET
     manageAlerts:false
