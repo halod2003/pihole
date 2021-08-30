@@ -1,5 +1,14 @@
 #!/bin/bash
-#Pi-Hole Setup
+echo "###################################################################"
+echo "#                                                                 #"
+echo "# This setup will install below services as part of the deployment#"
+echo "#   1) Node-Exporter for Raspberry Pi system monitoring           #"
+echo "#   2) Pi-Hole                                                    #"
+echo "#   3) Prometheus                                                 #"
+echo "#   4) Pi-Hole Exporter                                           #"
+echo "#   5) Grafana (with 2 dashboards)                                #"
+echo "#                                                                 #"
+echo "###################################################################"
 
 ## 1) Update Pi
 
