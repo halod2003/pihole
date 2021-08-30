@@ -23,19 +23,10 @@ echo "    "
 
 ## 3) Create supporting directories and files
 
-##For Pi-Hole
-
 cd /home/pi
-mkdir pihole
-mkdir -p pihole/{pihole,dnsmasq.d}
-mkdir prometheus
-mkdir grafana
-cd ../grafana
-mkdir -p grafana/provisioning/{datasources,dashboards}
-mkdir tmpinst
+mkdir -p {prometheus,pihole/{pihole,dnsmasq.d},grafana/provisioning/{datasources,dashboards},tmpinst}
 
 #For Prometheus
-cd /home/pi/prometheus
 curl -s https://raw.githubusercontent.com/halod2003/pihole/main/prometheus.yml -o prometheus/prometheus.yml
 curl -s https://raw.githubusercontent.com/halod2003/pihole/main/docker-compose.yml -o tmpinst/docker-compose.yml
 curl -s https://raw.githubusercontent.com/halod2003/pihole/main/prometheus_ds.yml -o grafana/provisioning/datasources/prometheus_ds.yml
@@ -50,8 +41,8 @@ wget https://github.com/prometheus/node_exporter/releases/download/v1.1.2/node_e
 tar xfz node_exporter-1.1.2.linux-armv7.tar.gz
 rm node_exporter-1.1.2.linux-armv7.tar.gz
 mv node_exporter-1.1.2.linux-armv7/ node_exporter
-curl -s https://raw.githubusercontent.com/halod2003/pihole/main/node_exporter.service -o node_exporter.service
-sudo mv node_exporter.service /etc/systemd/system/
+curl -s https://raw.githubusercontent.com/halod2003/pihole/main/node_exporter.service -o tmpinst/node_exporter.service
+sudo mv tmpinst/node_exporter.service /etc/systemd/system/
 sudo systemctl start node_exporter
 sudo systemctl enable node_exporter
 
