@@ -33,27 +33,27 @@ echo "    "
 ## 3) Create supporting directories and files
 
 cd /opt/
-mkdir -p Pihole/{prometheus,pihole/{pihole,dnsmasq.d},grafana/provisioning/{datasources,dashboards},tmpinst}
+sudo mkdir -p Pihole/{prometheus,pihole/{pihole,dnsmasq.d},grafana/provisioning/{datasources,dashboards},tmpinst}
 cd Pihole
 
 #Download and modify configuration files
-curl -s https://raw.githubusercontent.com/halod2003/pihole/main/prometheus.yml -o prometheus/prometheus.yml
-curl -s https://raw.githubusercontent.com/halod2003/pihole/main/docker-compose.yml -o tmpinst/docker-compose.yml
-curl -s https://raw.githubusercontent.com/halod2003/pihole/main/datasource.yml -o grafana/provisioning/datasources/datasource.yml
-curl -sL https://raw.githubusercontent.com/halod2003/pihole/main/dashboard.yml  -o grafana/provisioning/dashboards/dashboard.yml
-curl -sL https://grafana.com/api/dashboards/1860/revisions/23/download -o grafana/provisioning/dashboards/dash1.json
-curl -sL https://grafana.com/api/dashboards/10176/revisions/2/download -o grafana/provisioning/dashboards/dash2.json
+sudo curl -s https://raw.githubusercontent.com/halod2003/pihole/main/prometheus.yml -o prometheus/prometheus.yml
+sudo curl -s https://raw.githubusercontent.com/halod2003/pihole/main/docker-compose.yml -o tmpinst/docker-compose.yml
+sudo curl -s https://raw.githubusercontent.com/halod2003/pihole/main/datasource.yml -o grafana/provisioning/datasources/datasource.yml
+sudo curl -sL https://raw.githubusercontent.com/halod2003/pihole/main/dashboard.yml  -o grafana/provisioning/dashboards/dashboard.yml
+sudo curl -sL https://grafana.com/api/dashboards/1860/revisions/23/download -o grafana/provisioning/dashboards/dash1.json
+sudo curl -sL https://grafana.com/api/dashboards/10176/revisions/2/download -o grafana/provisioning/dashboards/dash2.json
 sudo sed -i "s/IP_Addr/$IPAddr/" prometheus/prometheus.yml
 sudo sed -i "s/IP_Addr/$IPAddr/" tmpinst/docker-compose.yml
 sudo sed -i "s/IP_Addr/$IPAddr/" grafana/provisioning/datasources/datasource.yml
 
 ## 4) Install Node Exporter
 
-wget https://github.com/prometheus/node_exporter/releases/download/v1.1.2/node_exporter-1.1.2.linux-armv7.tar.gz
-tar xfz node_exporter-1.1.2.linux-armv7.tar.gz
+sudo wget https://github.com/prometheus/node_exporter/releases/download/v1.1.2/node_exporter-1.1.2.linux-armv7.tar.gz
+sudo tar xfz node_exporter-1.1.2.linux-armv7.tar.gz
 rm node_exporter-1.1.2.linux-armv7.tar.gz
 mv node_exporter-1.1.2.linux-armv7/ node_exporter
-curl -s https://raw.githubusercontent.com/halod2003/pihole/main/node_exporter.service -o tmpinst/node_exporter.service
+sudo curl -s https://raw.githubusercontent.com/halod2003/pihole/main/node_exporter.service -o tmpinst/node_exporter.service
 sudo mv tmpinst/node_exporter.service /etc/systemd/system/
 sudo systemctl start node_exporter
 sudo systemctl enable node_exporter
