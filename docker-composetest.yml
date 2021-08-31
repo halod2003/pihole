@@ -1,0 +1,63 @@
+version: '3'
+services:
+    pihole:
+      container_name: PiHole
+      image: 'pihole/pihole:latest'
+      restart: unless-stopped
+      ports:
+        - '53:53/tcp'
+        - '53:53/udp'
+        - '80:80/tcp'
+      environment:
+        - TZ=Australia/Sydney
+        - WEBPASSWORD=pih00le@dmin
+        - VIRTUAL_HOST=pi.hole
+        - PROXY_LOCATION=pi.hole
+        - ServerIP=127.0.0.1
+      volumes:
+        - '/opt/Pihole/pihole/pihole/:/etc/pihole/'
+        - '/opt/Pihole/pihole/dnsmasq.d/:/etc/dnsmasq.d/'
+      dns:
+        - 127.0.0.1
+        - 1.1.1.1
+
+    grafana:
+      container_name: Grafana
+      image: 'grafana/grafana:latest'
+      restart: unless-stopped
+      ports:
+        - '3000:3000/tcp'
+      environment:
+        - 'GF_INSTALL_PLUGINS=grafana-piechart-panel,grafana-clock-panel,grafana-simple-json-datasource'
+        - 'GF_SECURITY_ADMIN_PASSWORD=GF@admin'
+
+    prometheus:
+      container_name: Prometheus
+      image: prom/prometheus
+      restart: unless-stopped
+      ports:
+        - '9090:9090/tcp'
+      volumes:
+        - '/opt/Pihole/prometheus:/etc/prometheus'
+
+    portainer-ce:
+      container_name: Portainer
+      image: 'portainer/portainer-ce'
+      ports:
+        - '9000:9000/tcp'
+      restart: always
+      volumes:
+        - '/var/run/docker.sock:/var/run/docker.sock'
+        - portainer_data:/data
+
+    pihole-exporter:
+      container_name: PiHole-Exporter
+      image: 'ekofr/pihole-exporter:v0.0.11'
+      restart: unless-stopped
+      ports:
+        - '9617:9617/tcp'
+      environment:
+        - PIHOLE_PASSWORD=pih00le@dmin
+        - INTERVAL=30s
+        - PORT=9617
+        - PIHOLE_HOSTNAME=IP_Addr
