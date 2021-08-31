@@ -15,8 +15,8 @@ services:
         - PROXY_LOCATION=pi.hole
         - ServerIP=127.0.0.1
       volumes:
-        - '/home/pi/pihole/pihole/:/etc/pihole/'
-        - '/home/pi/pihole/dnsmasq.d/:/etc/dnsmasq.d/'
+        - '/opt/Pihole/pihole/pihole/:/etc/pihole/'
+        - '/opt/Pihole/pihole/dnsmasq.d/:/etc/dnsmasq.d/'
       dns:
         - 127.0.0.1
         - 1.1.1.1
@@ -38,7 +38,7 @@ services:
       ports:
         - '9090:9090/tcp'
       volumes:
-        - '/home/pi/prometheus:/etc/prometheus'
+        - '/opt/Pihole/prometheus:/etc/prometheus'
 
 #    portainer-ce:
 #      container_name: Portainer
