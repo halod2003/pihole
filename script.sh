@@ -32,8 +32,9 @@ echo "    "
 
 ## 3) Create supporting directories and files
 
-cd /home/pi
-mkdir -p {prometheus,pihole/{pihole,dnsmasq.d},grafana/provisioning/{datasources,dashboards},tmpinst}
+cd /opt/
+mkdir -p Pihole/{prometheus,pihole/{pihole,dnsmasq.d},grafana/provisioning/{datasources,dashboards},tmpinst}
+cd Pihole
 
 #Download and modify configuration files
 curl -s https://raw.githubusercontent.com/halod2003/pihole/main/prometheus.yml -o prometheus/prometheus.yml
@@ -48,7 +49,6 @@ sudo sed -i "s/IP_Addr/$IPAddr/" grafana/provisioning/datasources/datasource.yml
 
 ## 4) Install Node Exporter
 
-cd /home/pi
 wget https://github.com/prometheus/node_exporter/releases/download/v1.1.2/node_exporter-1.1.2.linux-armv7.tar.gz
 tar xfz node_exporter-1.1.2.linux-armv7.tar.gz
 rm node_exporter-1.1.2.linux-armv7.tar.gz
