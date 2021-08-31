@@ -33,18 +33,18 @@ echo "    "
 ## 3) Create supporting directories and files
 
 cd /opt/
-sudo mkdir -p Pihole/{prometheus,pihole/{pihole,dnsmasq.d},grafana/provisioning/{datasources,dashboards},tmpinst}
+sudo mkdir -p Pihole/{prometheus,pihole/{pihole,dnsmasq.d},grafana/provisioning/{datasources,dashboards},Pihole_deployment}
 cd Pihole
 
 #Download and modify configuration files
 sudo curl -s https://raw.githubusercontent.com/halod2003/pihole/main/prometheus.yml -o prometheus/prometheus.yml
-sudo curl -s https://raw.githubusercontent.com/halod2003/pihole/main/docker-compose.yml -o tmpinst/docker-compose.yml
+sudo curl -s https://raw.githubusercontent.com/halod2003/pihole/main/docker-compose.yml -o Pihole_deployment/docker-compose.yml
 sudo curl -s https://raw.githubusercontent.com/halod2003/pihole/main/datasource.yml -o grafana/provisioning/datasources/datasource.yml
 sudo curl -sL https://raw.githubusercontent.com/halod2003/pihole/main/dashboard.yml  -o grafana/provisioning/dashboards/dashboard.yml
 sudo curl -sL https://grafana.com/api/dashboards/1860/revisions/23/download -o grafana/provisioning/dashboards/dash1.json
 sudo curl -sL https://grafana.com/api/dashboards/10176/revisions/2/download -o grafana/provisioning/dashboards/dash2.json
 sudo sed -i "s/IP_Addr/$IPAddr/" prometheus/prometheus.yml
-sudo sed -i "s/IP_Addr/$IPAddr/" tmpinst/docker-compose.yml
+sudo sed -i "s/IP_Addr/$IPAddr/" Pihole_deployment/docker-compose.yml
 sudo sed -i "s/IP_Addr/$IPAddr/" grafana/provisioning/datasources/datasource.yml
 
 ## 4) Install Node Exporter
@@ -60,11 +60,11 @@ sudo systemctl enable node_exporter
 
 ## 5) Install services using docker-compose
 
-sudo docker-compose -f tmpinst/docker-compose.yml up -d
+sudo docker-compose -f Pihole_deployment/docker-compose.yml up -d
 
 #clean-up
-sudo rm tmpinst/docker-compose.yml
-sudo rm -r tmpinst
+sudo rm Pihole_deployment/docker-compose.yml
+sudo rm -r Pihole_deployment
 
 ## 6) Print access information
 
