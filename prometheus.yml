@@ -17,8 +17,7 @@ scrape_configs:
     # metrics_path defaults to '/metrics'
     # scheme defaults to 'http'.
     static_configs:
-    - targets: ['127.0.0.1:9090']
-    - targets: ['IP_Addr:9100']
+    - targets: ['127.0.0.1:9090','IP_Addr:9100']
 
 # Monitoring Pi-Hole
   - job_name: 'Pihole'
