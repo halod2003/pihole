@@ -24,6 +24,7 @@ echo "###################################################################"
 
 ## 2) Collecting information
 
+Username=$USER
 echo What is the IP address of Pi-Hole?
 exec < /dev/tty
 read IPAddr
@@ -54,8 +55,9 @@ sudo wget https://github.com/prometheus/node_exporter/releases/download/v1.1.2/n
 sudo tar xfz node_exporter-1.1.2.linux-armv7.tar.gz
 rm node_exporter-1.1.2.linux-armv7.tar.gz
 mv node_exporter-1.1.2.linux-armv7/ node_exporter
-sudo curl -s https://raw.githubusercontent.com/halod2003/pihole/main/node_exporter.service -o tmpinst/node_exporter.service
-sudo mv tmpinst/node_exporter.service /etc/systemd/system/
+sudo curl -s https://raw.githubusercontent.com/halod2003/pihole/main/node_exporter.service -o Pihole_deployment/node_exporter.service
+sudo sed -i "s/User_Name/$Username/" Pihole_deployment/node_exporter.service
+sudo mv Pihole_deployment/node_exporter.service /etc/systemd/system/
 sudo systemctl start node_exporter
 sudo systemctl enable node_exporter
 
