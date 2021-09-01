@@ -63,7 +63,7 @@ sudo systemctl enable node_exporter
 
 ## 5) Install services using docker-compose
 
-sudo docker-compose -f Pihole_deployment/docker-compose.yml up -d
+sudo docker-compose -p PiholeDeployment -f Pihole_deployment/docker-compose.yml up -d --quiet-pull
 
 #clean-up
 sudo rm Pihole_deployment/docker-compose.yml
