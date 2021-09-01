@@ -51,10 +51,10 @@ sudo sed -i "s/IP_Addr/$IPAddr/" grafana/provisioning/datasources/datasource.yml
 
 ## 4) Install Node Exporter
 
-sudo wget https://github.com/prometheus/node_exporter/releases/download/v1.1.2/node_exporter-1.1.2.linux-armv7.tar.gz
+sudo wget -q https://github.com/prometheus/node_exporter/releases/download/v1.1.2/node_exporter-1.1.2.linux-armv7.tar.gz
 sudo tar xfz node_exporter-1.1.2.linux-armv7.tar.gz
-rm node_exporter-1.1.2.linux-armv7.tar.gz
-mv node_exporter-1.1.2.linux-armv7/ node_exporter
+sudo rm node_exporter-1.1.2.linux-armv7.tar.gz
+sudo mv node_exporter-1.1.2.linux-armv7/ node_exporter
 sudo curl -s https://raw.githubusercontent.com/halod2003/pihole/main/node_exporter.service -o Pihole_deployment/node_exporter.service
 sudo sed -i "s/User_Name/$Username/" Pihole_deployment/node_exporter.service
 sudo mv Pihole_deployment/node_exporter.service /etc/systemd/system/
