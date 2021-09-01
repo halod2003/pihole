@@ -37,6 +37,7 @@ sudo mkdir -p Pihole/{prometheus,pihole/{pihole,dnsmasq.d},grafana/provisioning/
 cd Pihole
 
 #Download and modify configuration files
+sudo curl -s https://raw.githubusercontent.com/halod2003/pihole/main/adlists.list -o pihole/pihole/adlists.list
 sudo curl -s https://raw.githubusercontent.com/halod2003/pihole/main/prometheus.yml -o prometheus/prometheus.yml
 sudo curl -s https://raw.githubusercontent.com/halod2003/pihole/main/docker-compose.yml -o Pihole_deployment/docker-compose.yml
 sudo curl -s https://raw.githubusercontent.com/halod2003/pihole/main/datasource.yml -o grafana/provisioning/datasources/datasource.yml
