@@ -44,7 +44,6 @@ sudo curl -s https://raw.githubusercontent.com/halod2003/pihole/main/datasource.
 sudo curl -sL https://raw.githubusercontent.com/halod2003/pihole/main/dashboard.yml  -o grafana/provisioning/dashboards/dashboard.yml
 sudo curl -sL https://grafana.com/api/dashboards/1860/revisions/23/download -o grafana/provisioning/dashboards/dash1.json
 sudo curl -sL https://grafana.com/api/dashboards/10176/revisions/2/download -o grafana/provisioning/dashboards/dash2.json
-sudo curl -sL https://grafana.com/api/dashboards/893/revisions/5/download -o grafana/provisioning/dashboards/dash3.json
 sudo sed -i "s/IP_Addr/$IPAddr/" prometheus/prometheus.yml
 sudo sed -i "s/IP_Addr/$IPAddr/" Pihole_deployment/docker-compose.yml
 sudo sed -i "s/IP_Addr/$IPAddr/" grafana/provisioning/datasources/datasource.yml
