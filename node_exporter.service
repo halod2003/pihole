@@ -4,7 +4,7 @@ Wants=network-online.target
 After=network-online.target
 
 [Service]
-User=User_Name
+User=pi
 ExecStart=/home/pi/node_exporter/node_exporter
 
 [Install]
